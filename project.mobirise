@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "My Portfolio",
-    "currentPage": "html.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "mobirise4",
       "title": "Mobirise 4",
@@ -4217,7 +4217,7 @@
         }
       ]
     },
-    "html.html": {
+    "index.html": {
       "settings": {
         "main": true,
         "title": "Home",
