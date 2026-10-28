@@ -1,0 +1,41 @@
+{
+  "name": "bryce-newell-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portfolio website for Bryce Newell, Software Engineer and Game Developer.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "serve out",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "prettier": "^3.9.10",
+    "serve": "^14.2.6",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.154.0"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

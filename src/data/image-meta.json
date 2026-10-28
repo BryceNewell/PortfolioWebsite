@@ -1,0 +1,90 @@
+{
+ "pirates-ship": {
+  "w": 1623,
+  "h": 695
+ },
+ "pirates-terrain": {
+  "w": 1800,
+  "h": 904
+ },
+ "pirates-waves": {
+  "w": 1800,
+  "h": 909
+ },
+ "pirates-town": {
+  "w": 1800,
+  "h": 906
+ },
+ "ultraleap-physical-hands": {
+  "w": 1800,
+  "h": 926
+ },
+ "ultraleap-pose": {
+  "w": 422,
+  "h": 316
+ },
+ "ultraleap-xr-ui": {
+  "w": 972,
+  "h": 549
+ },
+ "sea-ship": {
+  "w": 1800,
+  "h": 1200
+ },
+ "sea-laptop": {
+  "w": 1800,
+  "h": 1204
+ },
+ "sea-warship": {
+  "w": 1800,
+  "h": 1232
+ },
+ "kachiku-arena": {
+  "w": 1617,
+  "h": 907
+ },
+ "kachiku-shrine": {
+  "w": 627,
+  "h": 488
+ },
+ "kachiku-map": {
+  "w": 827,
+  "h": 408
+ },
+ "roads-start": {
+  "w": 800,
+  "h": 449
+ },
+ "roads-canyon": {
+  "w": 1248,
+  "h": 700
+ },
+ "roads-run": {
+  "w": 436,
+  "h": 244
+ },
+ "dx11-wall": {
+  "w": 1248,
+  "h": 703
+ },
+ "dx11-tower": {
+  "w": 1266,
+  "h": 713
+ },
+ "gan-voxels": {
+  "w": 478,
+  "h": 249
+ },
+ "gan-loss": {
+  "w": 640,
+  "h": 480
+ },
+ "gan-car": {
+  "w": 444,
+  "h": 197
+ },
+ "ultraleap-logo": {
+  "w": 280,
+  "h": 280
+ }
+}
