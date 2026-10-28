@@ -1,12 +1,22 @@
 import type { ImageKey } from "./images";
 
-export type ProjectKind = "passion" | "professional" | "team" | "jam" | "tool" | "research";
+export type ProjectKind = "passion" | "professional" | "team" | "jam" | "tool" | "research" | "app";
 
 export type Highlight = {
   title: string;
   body: string;
   image?: ImageKey;
   alt?: string;
+};
+
+/** Extra content for a published mobile app. */
+export type AppDetails = {
+  playStoreUrl: string;
+  icon: ImageKey;
+  screens: { image: ImageKey; alt: string; caption: string }[];
+  features: { title: string; body: string }[];
+  stats: { value: string; label: string }[];
+  stack: { group: string; items: string[] }[];
 };
 
 export type Project = {
@@ -31,9 +41,169 @@ export type Project = {
   links?: { label: string; href: string }[];
   note?: string;
   featured?: boolean;
+  /** Shown as the dedicated spotlight on the home page instead of in the project lists. */
+  spotlight?: boolean;
+  app?: AppDetails;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "poitracker",
+    title: "POITracker",
+    kind: "app",
+    label: "Solo project · Android app",
+    period: "Live on Google Play",
+    summary:
+      "A map-first, offline-first travel companion for saving and organising places. Designed, built and released solo in Dart and Flutter, with Firebase sync, Street View and Google Play subscriptions.",
+    tagline:
+      "Never forget a hidden gem or a breathtaking view again. A travel companion I designed, built and shipped to Google Play on my own.",
+    cover: "poitracker-cover",
+    coverAlt:
+      "Three phone screens from POITracker: a map of saved places, a place detail with Street View, and a colour-coded list in dark mode.",
+    tech: ["Dart", "Flutter", "Riverpod", "SQLite", "Firebase", "Google Maps", "Kotlin", "TypeScript"],
+    facts: [
+      { label: "Platform", value: "Android, on Google Play" },
+      { label: "Role", value: "Solo developer: design, build and release" },
+      { label: "Built with", value: "Dart and Flutter, Firebase backend" },
+      { label: "Status", value: "Live and in active development" },
+    ],
+    highlights: [
+      {
+        title: "Offline-first, with sync you control",
+        body: "Everything is stored in a local SQLite database, so the whole app works with no signal. Cloud sync is opt-in and runs while the app is open: it covers place metadata only, photos stay on the device, and concurrent edits are surfaced as an explicit keep-device or keep-cloud choice instead of being overwritten. Pro and Lifetime accounts also get up to seven rolling daily recovery snapshots, served by TypeScript Cloud Functions.",
+      },
+      {
+        title: "Security and privacy by design",
+        body: "Sensitive data is protected with AES-GCM encryption, with keys held in platform secure storage, and exports can be encrypted. The app supports biometric unlock and auto-lock, Firebase App Check, GDPR-style consent controls, and in-app data export and account deletion.",
+      },
+      {
+        title: "Clean, tested architecture",
+        body: "A feature-first structure with Riverpod state management, repositories for data access and a service layer for business logic. Over 300 automated tests cover models, repositories, services and screens, and a GitHub Actions pipeline runs analysis, tests with coverage, Firestore security-rules tests and the Android App Bundle build.",
+      },
+      {
+        title: "Subscriptions done properly",
+        body: "Free, Pro and Lifetime tiers are sold through Google Play Billing. Purchases are verified server-side by a Cloud Function, and features are gated through reactive Riverpod providers and tier-aware widgets so access always matches the user's entitlement.",
+      },
+    ],
+    story: {
+      heading: "Building it solo",
+      paragraphs: [
+        "POITracker is a map-first travel companion for capturing and organising points of interest, from a quick GPS save to a full library of places with photos, reviews, reminders and Street View.",
+        "I built it entirely on my own as a personal project, not formal employment: the product design, the Flutter and Dart app, the native Android home-screen widgets in Kotlin, the Firebase backend with TypeScript Cloud Functions, the automated tests and CI pipeline, and the release to Google Play.",
+        "Working solo meant owning every trade-off end to end. I kept the app fully usable offline, made sync opt-in and conflict-aware rather than silently overwriting data, kept photos on the device, and treated privacy controls, encrypted exports and subscription gating as part of the architecture instead of an afterthought.",
+        "It is live on Google Play and still in active development.",
+      ],
+    },
+    links: [
+      {
+        label: "POITracker on Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.brycenewell.holidaypoitracker",
+      },
+    ],
+    note: "Screenshots are from the Google Play listing. Google Play is a trademark of Google LLC.",
+    spotlight: true,
+    app: {
+      playStoreUrl:
+        "https://play.google.com/store/apps/details?id=com.brycenewell.holidaypoitracker&hl=en_GB",
+      icon: "poitracker-icon",
+      screens: [
+        {
+          image: "poitracker-map",
+          alt: "POITracker's map view showing saved places as pins around Port Dickson, with collection tabs along the top.",
+          caption: "Your places on an interactive Google Map",
+        },
+        {
+          image: "poitracker-list-light",
+          alt: "POITracker's list view in light theme with colour-coded category rows and thumbnails.",
+          caption: "Colour-coded categories in the list",
+        },
+        {
+          image: "poitracker-list-dark",
+          alt: "POITracker's list view in dark theme with colour-coded rows.",
+          caption: "Light and dark themes throughout",
+        },
+        {
+          image: "poitracker-detail",
+          alt: "A POITracker place detail screen with a Street View panorama, photos section, address, navigate and reminder buttons, and nearby businesses.",
+          caption: "Street View, photos, reviews and reminders per place",
+        },
+      ],
+      features: [
+        {
+          title: "Instant capture",
+          body: "Save a spot from your GPS in one tap, from typed coordinates or an address, a map long-press or a place search, with duplicate detection before it is saved.",
+        },
+        {
+          title: "Interactive map",
+          body: "Browse every place on Google Maps with colour-coded markers, filter by favourites, rating or category, and jump straight into turn-by-turn navigation.",
+        },
+        {
+          title: "Organise your way",
+          body: "Unlimited colour-coded categories, custom tags, and collections, including shared collections, plus reusable filter and sort presets.",
+        },
+        {
+          title: "Photos and Street View",
+          body: "Attach multiple photos to each place and preview 360° Street View panoramas where they are available.",
+        },
+        {
+          title: "Reviews and reminders",
+          body: "Rate and review places, mark favourites, and schedule date-and-time reminders so you remember to revisit them.",
+        },
+        {
+          title: "Insights dashboard",
+          body: "Charts of activity by day, weekday, hour and month, category distribution, review trends and location hotspots, filtered by date range.",
+        },
+        {
+          title: "Backup and portability",
+          body: "Opt-in cloud sync with recovery snapshots, plus separate encrypted offline export and import for taking your data anywhere.",
+        },
+        {
+          title: "Private and secure",
+          body: "Biometric unlock, auto-lock, a security dashboard, granular consent controls, and tools to export or delete your data.",
+        },
+        {
+          title: "Home-screen widgets",
+          body: "Native Kotlin quick-save widgets in four sizes, so a place is one tap away from your home screen.",
+        },
+      ],
+      stats: [
+        { value: "56k", label: "lines of Dart in the app" },
+        { value: "300+", label: "automated unit and widget tests" },
+        { value: "4", label: "quick-save home-screen widget sizes" },
+        { value: "7", label: "rolling daily recovery snapshots for Pro and Lifetime" },
+      ],
+      stack: [
+        { group: "App", items: ["Dart", "Flutter", "Riverpod", "Freezed", "fl_chart"] },
+        {
+          group: "Data and sync",
+          items: ["SQLite (sqflite)", "Cloud Firestore", "Secure storage", "Offline sync queue"],
+        },
+        {
+          group: "Backend",
+          items: ["Firebase Auth", "Cloud Functions (TypeScript)", "App Check", "Crashlytics", "Analytics"],
+        },
+        {
+          group: "Platform and device",
+          items: [
+            "Google Maps and Street View",
+            "Geolocation",
+            "Local notifications",
+            "Biometrics",
+            "Kotlin widgets",
+          ],
+        },
+        {
+          group: "Quality and release",
+          items: [
+            "flutter_test and Mockito",
+            "Firestore rules tests",
+            "GitHub Actions CI",
+            "Google Play Billing",
+          ],
+        },
+      ],
+    },
+  },
   {
     slug: "procedural-pirates",
     title: "Procedural Pirates",
@@ -369,8 +539,9 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
-export const otherProjects = projects.filter((p) => !p.featured);
+export const spotlightProject = projects.find((p) => p.spotlight);
+export const featuredProjects = projects.filter((p) => p.featured && !p.spotlight);
+export const otherProjects = projects.filter((p) => !p.featured && !p.spotlight);
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);

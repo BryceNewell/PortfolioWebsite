@@ -85,7 +85,7 @@ export function ExperienceSection() {
             Outside of work, I build games and tools for the love of it, and a few of my projects started at
             university. These are personal and academic projects, not employment.
           </p>
-          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-5 md:grid-cols-2">
             {sideProjects.map((p, i) => (
               <Reveal as="li" key={p.slug} delay={i * 90} className="h-full">
                 <Spotlight className="group h-full">

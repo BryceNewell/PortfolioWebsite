@@ -86,5 +86,29 @@
  "ultraleap-logo": {
   "w": 280,
   "h": 280
+ },
+ "poitracker-map": {
+  "w": 410,
+  "h": 913
+ },
+ "poitracker-list-light": {
+  "w": 408,
+  "h": 911
+ },
+ "poitracker-list-dark": {
+  "w": 413,
+  "h": 913
+ },
+ "poitracker-detail": {
+  "w": 409,
+  "h": 913
+ },
+ "poitracker-icon": {
+  "w": 256,
+  "h": 256
+ },
+ "poitracker-cover": {
+  "w": 1800,
+  "h": 1125
  }
 }

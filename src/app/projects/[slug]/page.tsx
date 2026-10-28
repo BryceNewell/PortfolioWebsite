@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { GooglePlayButton } from "@/components/GooglePlayButton";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "@/components/icons";
+import { PhoneFrame } from "@/components/PhoneFrame";
 import { Reveal } from "@/components/Reveal";
 import { Spotlight } from "@/components/Spotlight";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ZoomImage } from "@/components/ZoomImage";
 import { img, type ImageKey } from "@/data/images";
-import { getProject, projects, type Highlight, type Project } from "@/data/projects";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { getProject, projects, type AppDetails, type Highlight, type Project } from "@/data/projects";
+import { absoluteUrl, SITE_URL, site } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -55,9 +57,36 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
   const prev = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
   const cover = img(project.cover);
+  const app = project.app;
+
+  // Section numbers follow render order.
+  let n = 0;
+  const num = () => String(++n).padStart(2, "0");
+  const nScreens = app ? num() : null;
+  const nFeatures = app ? num() : null;
+  const nHighlights = num();
+  const nEngineering = app ? num() : null;
+  const nVideo = project.video ? num() : null;
+  const nStory = num();
+
+  const jsonLd = app
+    ? {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        name: project.title,
+        operatingSystem: "ANDROID",
+        description: project.summary,
+        url: app.playStoreUrl,
+        image: absoluteUrl(`/images/${project.cover}.webp`),
+        author: { "@type": "Person", name: site.name, url: SITE_URL },
+      }
+    : null;
 
   return (
     <article>
+      {jsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      ) : null}
       {/* Header */}
       <header className="relative isolate overflow-hidden pt-36 pb-10 sm:pt-44 sm:pb-14">
         <div
@@ -78,8 +107,10 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           </Link>
 
           <p className="eyebrow mt-10">
-            <span>{project.label}</span>
-            {project.period ? <span className="text-fg-dim">· {project.period}</span> : null}
+            <span>
+              {project.label}
+              {project.period ? <span className="text-fg-dim"> · {project.period}</span> : null}
+            </span>
           </p>
           <h1 className="mt-5 max-w-5xl text-[clamp(2.75rem,8vw,7rem)] leading-[0.92] font-bold tracking-[-0.028em]">
             {project.title}
@@ -93,6 +124,15 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               </li>
             ))}
           </ul>
+
+          {app ? (
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <GooglePlayButton href={app.playStoreUrl} />
+              <Link href="/privacy-policy" className="btn btn-ghost">
+                Privacy policy
+              </Link>
+            </div>
+          ) : null}
         </div>
       </header>
 
@@ -127,13 +167,16 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </dl>
       </div>
 
+      {app && nScreens ? <AppScreens app={app} number={nScreens} /> : null}
+      {app && nFeatures ? <AppFeatures app={app} number={nFeatures} /> : null}
+
       {/* Highlights */}
       <section aria-labelledby="highlights-title" className="section !pb-0">
         <div className="container-x">
           <Reveal>
             <p className="eyebrow">
-              <span aria-hidden="true">01</span>
-              <span id="highlights-title">Highlights</span>
+              <span aria-hidden="true">{nHighlights}</span>
+              <span id="highlights-title">{app ? "Under the hood" : "Highlights"}</span>
             </p>
           </Reveal>
           <div className="mt-12 space-y-16 sm:mt-16 sm:space-y-28">
@@ -144,13 +187,15 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
+      {app && nEngineering ? <AppEngineering app={app} number={nEngineering} /> : null}
+
       {/* Video */}
       {project.video ? (
         <section aria-labelledby="video-title" className="section !pb-0">
           <div className="container-x">
             <Reveal>
               <p className="eyebrow">
-                <span aria-hidden="true">02</span>
+                <span aria-hidden="true">{nVideo}</span>
                 <span id="video-title">View in action</span>
               </p>
               <div className="mx-auto mt-10 max-w-5xl">
@@ -163,7 +208,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
       ) : null}
 
       {/* Story */}
-      <Story project={project} sectionNumber={project.video ? "03" : "02"} />
+      <Story project={project} sectionNumber={nStory} />
 
       {/* Prev / next */}
       <nav aria-label="More projects" className="border-t border-line">
@@ -272,6 +317,104 @@ function Story({ project, sectionNumber }: { project: Project; sectionNumber: st
               ))}
             </ul>
           ) : null}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function AppScreens({ app, number }: { app: AppDetails; number: string }) {
+  return (
+    <section aria-labelledby="screens-title" className="section !pb-0">
+      <div className="container-x">
+        <Reveal>
+          <p className="eyebrow">
+            <span aria-hidden="true">{number}</span>
+            <span id="screens-title">In the app</span>
+          </p>
+        </Reveal>
+        <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 sm:mt-16 lg:grid-cols-4 lg:gap-x-8">
+          {app.screens.map((sc, i) => (
+            <Reveal as="li" key={sc.image} delay={i * 90} className="flex flex-col items-center">
+              <div className="w-full max-w-[16rem]">
+                <PhoneFrame image={sc.image} alt={sc.alt} sizes="(min-width: 1024px) 16rem, 45vw" zoom />
+              </div>
+              <p className="mt-5 max-w-[16rem] text-center text-sm text-fg-muted">{sc.caption}</p>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function AppFeatures({ app, number }: { app: AppDetails; number: string }) {
+  return (
+    <section aria-labelledby="features-title" className="section !pb-0">
+      <div className="container-x">
+        <Reveal>
+          <h2 className="eyebrow">
+            <span aria-hidden="true">{number}</span>
+            <span id="features-title">Features</span>
+          </h2>
+        </Reveal>
+        <ul className="mt-12 grid gap-5 sm:mt-16 md:grid-cols-2 lg:grid-cols-3">
+          {app.features.map((f, i) => (
+            <Reveal as="li" key={f.title} delay={(i % 3) * 80} className="h-full">
+              <Spotlight className="h-full">
+                <div className="flex h-full flex-col p-7">
+                  <p className="font-mono text-xs text-ember-400">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-3 text-xl font-semibold">{f.title}</h3>
+                  <p className="mt-3 text-[0.97rem] text-fg-muted">{f.body}</p>
+                </div>
+              </Spotlight>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function AppEngineering({ app, number }: { app: AppDetails; number: string }) {
+  return (
+    <section aria-labelledby="engineering-title" className="section !pb-0">
+      <div className="container-x">
+        <Reveal>
+          <h2 className="eyebrow">
+            <span aria-hidden="true">{number}</span>
+            <span id="engineering-title">By the numbers and the stack</span>
+          </h2>
+        </Reveal>
+
+        <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-16 lg:grid-cols-4">
+          {app.stats.map((s) => (
+            <div key={s.label} className="bg-ink-950 p-6 sm:p-8">
+              <dt className="font-display text-[clamp(2.75rem,5vw,4rem)] leading-none font-bold tracking-[-0.028em]">
+                <span className="bg-gradient-to-b from-fg to-ember-400 bg-clip-text text-transparent">
+                  {s.value}
+                </span>
+              </dt>
+              <dd className="mt-3 text-sm leading-snug text-fg-muted">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <Reveal>
+          <ul className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+            {app.stack.map((g) => (
+              <li key={g.group}>
+                <h3 className="font-mono text-xs tracking-[0.16em] text-ember-400 uppercase">{g.group}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {g.items.map((it) => (
+                    <li key={it} className="chip">
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

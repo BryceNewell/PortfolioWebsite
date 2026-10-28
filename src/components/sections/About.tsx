@@ -70,6 +70,16 @@ const code: Tok[][] = [
     [x, "],"],
   ],
   [
+    [p, "  mobile"],
+    [x, ": ["],
+    [s, '"Flutter"'],
+    [x, ", "],
+    [s, '"Dart"'],
+    [x, ", "],
+    [s, '"Firebase"'],
+    [x, "],"],
+  ],
+  [
     [p, "  values"],
     [x, ": ["],
     [s, '"clean code"'],

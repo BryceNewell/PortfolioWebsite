@@ -59,6 +59,13 @@ export const experience: Experience[] = [
 /** Personal and university projects. Not employment. */
 export const sideProjects: SideProject[] = [
   {
+    title: "POITracker",
+    status: "Solo project · Live on Google Play",
+    summary:
+      "An Android travel companion for saving and organising places, built solo in Dart and Flutter with a Firebase backend. Offline-first, with Street View, sync and subscriptions.",
+    slug: "poitracker",
+  },
+  {
     title: "Procedural Pirates",
     status: "Personal project · ongoing",
     summary:

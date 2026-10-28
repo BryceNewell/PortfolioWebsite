@@ -6,6 +6,8 @@ const items = [
   "DirectX 11",
   "HLSL",
   "Python",
+  "Dart",
+  "Flutter",
   "TensorFlow",
   "JavaScript",
   "React",

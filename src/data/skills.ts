@@ -12,6 +12,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "C++", note: "High-performance systems and real-time graphics." },
       { name: "C#", note: "Robust application development and game logic." },
       { name: "Python", note: "Backend development, data analysis and scripting." },
+      { name: "Dart & Flutter", note: "Cross-platform mobile apps, including POITracker on Google Play." },
       { name: "JavaScript & React", note: "Dynamic web applications and component-based interfaces." },
     ],
   },
