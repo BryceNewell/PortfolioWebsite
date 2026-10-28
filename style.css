@@ -1,0 +1,611 @@
+/* Color Palette */
+:root {
+    --electric-blue: #007BFF;
+    --radiant-orange: #FF6F00;
+    --vivid-teal: #00C853;
+    --sunny-yellow: #FFD700;
+    --deep-magenta: #C2185B;
+    --dark-charcoal: #212121;
+    --light-gray: #F5F5F5;
+    --soft-white: #FFFFFF;
+}
+
+/* Font Pairings */
+:root {
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark-charcoal);
+    background-color: var(--light-gray);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--dark-charcoal);
+    /* Default heading color for contrast */
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+/* Link Styles */
+a {
+    color: var(--electric-blue);
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+    color: var(--radiant-orange);
+    /* Example hover effect */
+    text-decoration: underline;
+}
+
+/* Section Padding */
+section {
+    padding: 60px 0;
+    /* Consistent vertical padding */
+}
+
+/* Header Styles */
+header {
+    background-color: var(--dark-charcoal);
+    color: var(--soft-white);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    /* Adjust logo size as needed */
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--soft-white);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--radiant-orange);
+}
+
+/* Hero Section Styles */
+#hero {
+    background-color: var(--dark-charcoal);
+    color: var(--soft-white);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Takes up full viewport height */
+    padding-top: 80px;
+    /* Offset for fixed header */
+}
+
+#hero h1 {
+    font-family: var(--font-heading);
+    font-size: 4em;
+    margin-bottom: 0.2em;
+    color: var(--soft-white);
+}
+
+#hero p {
+    font-family: var(--font-body);
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    color: var(--light-gray);
+}
+
+.btn {
+    background-color: var(--electric-blue);
+    color: var(--soft-white);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--radiant-orange);
+    transform: translateY(-3px);
+}
+
+/* About Me Section Styles */
+.about-me-section {
+    background-color: var(--soft-white);
+    color: var(--dark-charcoal);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.about-me-section h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: var(--dark-charcoal);
+    position: relative;
+    display: inline-block;
+}
+
+.about-me-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--electric-blue);
+    border-radius: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-me-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .about-me-content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.about-me-text {
+    flex: 1;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.about-me-text.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-me-text h3 {
+    font-size: 1.8em;
+    color: var(--electric-blue);
+    margin-bottom: 15px;
+}
+
+.about-me-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--dark-charcoal);
+}
+
+.about-me-image {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out 0.2s;
+}
+
+.about-me-image.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-me-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-me-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: var(--vivid-teal);
+    color: var(--soft-white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.about-me-btn:hover {
+    background-color: var(--deep-magenta);
+    transform: translateY(-3px);
+}
+
+/* Simple scroll animation (JavaScript would be needed for full "on scroll" effect) */
+/* For demonstration, these classes can be added/removed by JS */
+/* Example: Intersection Observer API */
+/* Skills & Tech Stack Section Styles */
+.skills-section {
+    background-color: var(--light-gray);
+    color: var(--dark-charcoal);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.skills-section h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: var(--dark-charcoal);
+    position: relative;
+    display: inline-block;
+}
+
+.skills-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--electric-blue);
+    border-radius: 2px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skill-card {
+    background-color: var(--soft-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--electric-blue);
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--electric-blue);
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    color: var(--dark-charcoal);
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .skills-section h2 {
+        font-size: 2.5em;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Projects Section Styles */
+.projects-section {
+    background-color: var(--soft-white);
+    color: var(--dark-charcoal);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.projects-section h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: var(--dark-charcoal);
+    position: relative;
+    display: inline-block;
+}
+
+.projects-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--electric-blue);
+    border-radius: 2px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.project-card {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--electric-blue);
+    margin: 20px 20px 10px;
+}
+
+.project-card p {
+    font-family: var(--font-body);
+    font-size: 1em;
+    color: var(--dark-charcoal);
+    line-height: 1.6;
+    margin: 0 20px 20px;
+    flex-grow: 1;
+}
+
+.project-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px 20px;
+    margin-top: auto;
+}
+
+.project-btn {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.project-btn.secondary-btn {
+    background-color: var(--vivid-teal);
+}
+
+.project-btn.secondary-btn:hover {
+    background-color: var(--deep-magenta);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .projects-section h2 {
+        font-size: 2.5em;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-buttons {
+        flex-direction: column;
+    }
+
+    .project-btn {
+        margin: 5px 0;
+    }
+}
+
+/* Contact Section Styles */
+.contact-section {
+    background-color: var(--dark-charcoal);
+    color: var(--soft-white);
+    text-align: center;
+    padding: 80px 0;
+}
+
+.contact-section h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    color: var(--soft-white);
+    position: relative;
+    display: inline-block;
+}
+
+.contact-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--electric-blue);
+    border-radius: 2px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+@media (min-width: 768px) {
+    .contact-methods {
+        flex-direction: row;
+        justify-content: center;
+        gap: 50px;
+    }
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    color: var(--light-gray);
+    transition: color 0.3s ease;
+}
+
+.contact-method:hover {
+    color: var(--radiant-orange);
+}
+
+.contact-method i {
+    font-size: 1.5em;
+    color: var(--electric-blue);
+    transition: color 0.3s ease;
+}
+
+.contact-method:hover i {
+    color: var(--radiant-orange);
+}
+
+.contact-method a {
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: var(--radiant-orange);
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--dark-charcoal);
+    color: var(--light-gray);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.95em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer p {
+    margin: 0;
+    color: var(--soft-white);
+}
+
+.footer-links a,
+.social-links a {
+    color: var(--electric-blue);
+    margin: 0 15px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.social-links a:hover {
+    color: var(--radiant-orange);
+    text-decoration: underline;
+}
+
+.social-links i {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
