@@ -1,17 +1,9 @@
-export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+/** Canonical origin. Override with NEXT_PUBLIC_SITE_URL for preview builds. */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://brycenewell.co.uk").replace(/\/$/, "");
 
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://brycenewell.github.io/PortfolioWebsite"
-).replace(/\/$/, "");
-
-/** Absolute URL for a path on this site (SITE_URL already includes any sub-path). */
+/** Absolute URL for a path on this site. */
 export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
-
-/** Prefix a public/ asset path with the configured base path. */
-export function asset(path: string): string {
-  return `${BASE_PATH}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
 export const site = {

@@ -3,7 +3,8 @@
 The portfolio website of **Bryce Newell**, software engineer and game developer.
 
 Built with **Next.js 16** (App Router), **React 19**, **Tailwind CSS 4**, **TypeScript 5** and **ESLint 9**, and
-exported as fully static HTML so it can be hosted anywhere (it deploys to GitHub Pages).
+exported as fully static HTML and hosted on **Cloudflare** (Workers static assets) at
+**https://brycenewell.co.uk**.
 
 ## Highlights
 
@@ -57,27 +58,58 @@ original logo, a **tide** teal accent, Bricolage Grotesque (display), Hanken Gro
 (labels). Reusable classes (`.btn`, `.chip`, `.spotlight`, `.frame`, `.prose-site`, `.eyebrow`) sit in the
 components layer.
 
-## Deployment (GitHub Pages)
+## Deployment (Cloudflare)
 
-`.github/workflows/deploy.yml` lints, type-checks, builds and publishes `out/` on every push to `main`.
+The site is served by a Cloudflare Worker with static assets (`wrangler.jsonc`), which uploads the exported `out/`
+folder and attaches the custom domain `brycenewell.co.uk`. There is no server code to run.
 
-1. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
-2. Push to `main`. The workflow works out the base path automatically (`/<repo>` for project sites, empty for
-   `<user>.github.io`).
-3. Using a custom domain? Set the repository variable `SITE_URL` (for example `https://example.com`) and leave
-   `BASE_PATH` empty.
+| File                | Purpose                                                                     |
+| ------------------- | --------------------------------------------------------------------------- |
+| `wrangler.jsonc`    | Worker name, assets directory (`./out`), 404 handling and the custom domain |
+| `public/_headers`   | Security headers and long-lived caching for fingerprinted assets and images |
+| `public/_redirects` | 301s from the old `*.html` URLs to the new routes                           |
 
-For a manual build under a sub-path:
+### One-time setup
+
+1. **Domain on Cloudflare.** Add `brycenewell.co.uk` to your Cloudflare account (Websites → Add a site) and point the
+   domain's nameservers at Cloudflare at your registrar. The custom domain in `wrangler.jsonc` only works for zones
+   that are on your account.
+2. **Connect the repository (recommended).** Workers & Pages → Create → Import a repository → pick this repo, then:
+   - Build command: `npm run build`
+   - Deploy command: `npx wrangler deploy`
+   - Production branch: `main`
+
+   Every push to `main` then builds and deploys automatically, and other branches get preview builds. Cloudflare reads
+   the Node version from `.node-version`.
+
+3. **Redirect `www` to the apex (optional).** Add a DNS record for `www` (proxied, any placeholder IP such as
+   `192.0.2.1`) and a Redirect Rule: _If hostname equals `www.brycenewell.co.uk` → Dynamic redirect to
+   `concat("https://brycenewell.co.uk", http.request.uri.path)`, 301, preserve query string._
+
+### Deploying by hand
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/PortfolioWebsite NEXT_PUBLIC_SITE_URL=https://brycenewell.github.io/PortfolioWebsite npm run build
+npx wrangler login        # once
+npm run deploy            # builds, then wrangler deploy
 ```
+
+### Previewing locally in the Workers runtime
+
+```bash
+npm run preview           # builds, then wrangler dev at http://localhost:8787
+```
+
+`npm start` serves `out/` with a plain static server if you just want to look at the build.
 
 ### Legacy URLs
 
-The previous site's pages (`kachiku.html`, `SEA.html`, `Library.html`, …) are kept as tiny redirect stubs in
-`public/` so old links and bookmarks keep working. `privacy-policy.html` keeps the same URL because the route is
-exported as `privacy-policy.html`.
+The previous site's pages (`kachiku.html`, `SEA.html`, `Library.html`, …) are 301-redirected to their new routes by
+`public/_redirects`. `/privacy-policy.html` keeps working too: it is redirected to `/privacy-policy`.
+
+### Preview domains
+
+Canonical URLs, the sitemap and social cards use `https://brycenewell.co.uk`. For a preview build on another
+domain, set `NEXT_PUBLIC_SITE_URL` at build time.
 
 ## Project structure
 
@@ -92,4 +124,6 @@ src/
 public/
   images/              optimised WebP project imagery
   brand/               original logo
+  _headers, _redirects Cloudflare headers and legacy redirects
+wrangler.jsonc         Cloudflare Worker (static assets) config
 ```

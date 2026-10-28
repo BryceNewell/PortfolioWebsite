@@ -1,0 +1,12 @@
+# Legacy URLs from the previous (Mobirise) site -> new routes
+/proceduralPirates.html              /projects/procedural-pirates              301
+/ultraleapUnityPlugin.html           /projects/ultraleap-unity-plugin          301
+/SEA.html                            /projects/sea                             301
+/sea.html                            /projects/sea                             301
+/kachiku.html                        /projects/kachiku-64                      301
+/countryRoads.html                   /projects/country-roads                   301
+/directX11ProceduralBuildings.html   /projects/directx11-procedural-buildings  301
+/GAN.html                            /projects/3d-gan                          301
+/gan.html                            /projects/3d-gan                          301
+/Library.html                        /#work                                    301
+/index.html                          /                                         301
