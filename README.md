@@ -6,6 +6,7 @@ Built with **Next.js 16** (App Router), **React 19**, **Tailwind CSS 4**, **Type
 exported as fully static HTML and hosted on **Cloudflare** (Workers static assets) at
 **https://brycenewell.co.uk**.
 
+
 ## Highlights
 
 - **Procedural hero.** A live seascape drawn to a 2D canvas: a ten-octave Gerstner ocean with per-line LOD and
