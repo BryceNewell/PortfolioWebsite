@@ -18,7 +18,7 @@ export type SideProject = {
 /** Employment history, most recent first. */
 export const experience: Experience[] = [
   {
-    period: "2024 – Present",
+    period: "Sep 2024 – Present",
     title: "Software Engineer",
     org: "Systems Engineering & Assessment",
     summary: "Back at SEA, working on full-stack secure embedded systems for defence and training customers.",
@@ -56,7 +56,7 @@ export const experience: Experience[] = [
   },
 ];
 
-/** Unpaid work: personal projects, studio projects and game jams. Not employment. */
+/** Personal and university projects. Not employment. */
 export const sideProjects: SideProject[] = [
   {
     title: "Procedural Pirates",
@@ -66,10 +66,17 @@ export const sideProjects: SideProject[] = [
     slug: "procedural-pirates",
   },
   {
-    title: "Kachiku 64 & Global Game Jam 2019",
-    status: "Team projects",
+    title: "Kachiku 64",
+    status: "University project",
     summary:
-      "Bomb interaction systems for a 64-player co-op party game built by a team of ~30, and a second-place finish at the UK's largest Global Game Jam site in 48 hours.",
+      "A 64-player local co-op party game built by a team of ~30. I built the bomb interaction systems.",
     slug: "kachiku-64",
+  },
+  {
+    title: "Country Roads",
+    status: "University game jam",
+    summary:
+      "Made for Global Game Jam 2019 by a team of five in 48 hours: a procedurally generated Wild West road game that placed second at the UK's largest jam site.",
+    slug: "country-roads",
   },
 ];

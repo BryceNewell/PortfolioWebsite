@@ -77,21 +77,21 @@ export function ExperienceSection() {
         <div className="mt-20 sm:mt-28">
           <div className="mb-8 flex items-center gap-4">
             <h3 className="font-mono text-xs font-medium tracking-[0.16em] text-fg-muted uppercase">
-              Side projects
+              Side projects & university work
             </h3>
             <span aria-hidden="true" className="h-px flex-1 bg-line" />
           </div>
           <p className="mb-8 max-w-2xl text-fg-muted">
-            Outside of work, I build games and tools for the love of it. These are personal and team projects,
-            not employment.
+            Outside of work, I build games and tools for the love of it, and a few of my projects started at
+            university. These are personal and academic projects, not employment.
           </p>
-          <ul className="grid gap-5 md:grid-cols-2">
+          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {sideProjects.map((p, i) => (
               <Reveal as="li" key={p.slug} delay={i * 90} className="h-full">
                 <Spotlight className="group h-full">
                   <div className="flex h-full flex-col p-7 sm:p-9">
                     <p className="font-mono text-xs tracking-[0.12em] text-ember-400 uppercase">{p.status}</p>
-                    <h4 className="mt-3 text-2xl font-semibold sm:text-3xl">
+                    <h4 className="mt-3 text-2xl font-semibold">
                       <Link
                         href={`/projects/${p.slug}`}
                         className="after:absolute after:inset-0 after:z-10 after:content-['']"

@@ -140,7 +140,7 @@ export const projects: Project[] = [
     title: "Systems Engineering & Assessment",
     kind: "professional",
     label: "Professional · Defence, training & embedded",
-    period: "2020 – 2022 · 2024 – Present",
+    period: "2020 – 2022 · Sep 2024 – Present",
     summary:
       "Software Engineer at SEA, then and now: defence and training simulation across VR, AR and desktop, and today full-stack secure embedded systems.",
     tagline:
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     facts: [
       { label: "Company", value: "Systems Engineering & Assessment" },
       { label: "Role", value: "Software Engineer (current role)" },
-      { label: "Period", value: "May 2020 – Dec 2022, and 2024 – present" },
+      { label: "Period", value: "May 2020 – Dec 2022, and Sep 2024 – present" },
       { label: "Domain", value: "Defence, training and secure embedded systems" },
     ],
     highlights: [
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     story: {
       heading: "My work at SEA",
       paragraphs: [
-        "I rejoined Systems Engineering & Assessment as a Software Engineer in 2024, and my current work is on full-stack secure embedded systems.",
+        "I rejoined Systems Engineering & Assessment as a Software Engineer in September 2024, and my current work is on full-stack secure embedded systems.",
         "In my first stint at SEA, from May 2020 to December 2022, I played a pivotal role in delivering a wide array of defence and training software projects. I worked both collaboratively within teams and independently, taking on complex tasks that demanded a deep understanding of many technologies and development practices. I delivered products directly to customer sites, always with comprehensive delivery documentation for seamless implementation and support.",
         "One of the key challenges was managing several projects at once. That meant context switching between programming languages and platforms, and it taught me to stay effective under pressure. The projects spanned both virtual reality and standard screen-based software, each tailored to the specific needs of defence and training applications.",
         "I also contributed to an efficient in-house IDE for bespoke solutions, and as the primary C# and front-end developer for augmented and virtual reality projects I pushed to deliver high-quality, user-centric immersive software. The experience sharpened my skills in software development, project management and client relations.",
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     slug: "kachiku-64",
     title: "Kachiku 64",
     kind: "team",
-    label: "Team project",
+    label: "University team project",
     period: "Team of ~30",
     summary:
       "A 64-player local co-op party game in the spirit of Bomberman. 64 farm animals, tractors, planes and combine harvesters, with phones as controllers.",
@@ -226,7 +226,7 @@ export const projects: Project[] = [
     story: {
       heading: "How we did it",
       paragraphs: [
-        "Working as a large game development studio of around 30 people, we were entrusted with bringing the vision of a previous cohort to life by enhancing and completing their unfinished project. The game, inspired by Bomberman, is a dynamic battle arena where 64 players compete using power-ups and navigate an evolving map.",
+        "Working at university as a large game development team of around 30 people, we were entrusted with bringing the vision of a previous cohort to life by enhancing and completing their unfinished project. The game, inspired by Bomberman, is a dynamic battle arena where 64 players compete using power-ups and navigate an evolving map.",
         "My sub-group was tasked with developing the system that handles all bomb interactions. That demanded close collaboration with the other teams, so our work integrated seamlessly with every game mode and every aspect of gameplay. It honed our teamwork and communication as much as our technical expertise in game development.",
       ],
     },
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     slug: "country-roads",
     title: "Country Roads",
     kind: "jam",
-    label: "Game jam · 2nd place",
+    label: "University game jam · 2nd place",
     period: "Global Game Jam 2019",
     summary:
       "Played as a horse hauling a cart home through a procedurally generated Wild West. Built in 48 hours and placed second at the UK's largest jam site.",
