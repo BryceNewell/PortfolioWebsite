@@ -70,6 +70,16 @@ const code: Tok[][] = [
     [x, "],"],
   ],
   [
+    [p, "  mobile"],
+    [x, ": ["],
+    [s, '"Flutter"'],
+    [x, ", "],
+    [s, '"Dart"'],
+    [x, ", "],
+    [s, '"Firebase"'],
+    [x, "],"],
+  ],
+  [
     [p, "  values"],
     [x, ": ["],
     [s, '"clean code"'],
@@ -82,7 +92,7 @@ const code: Tok[][] = [
   [
     [p, "  now"],
     [x, ": "],
-    [s, '"Building Procedural Pirates in UE 5.4"'],
+    [s, '"Software Engineer at SEA: secure embedded systems"'],
     [x, ","],
   ],
   [

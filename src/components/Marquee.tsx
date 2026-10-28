@@ -6,6 +6,8 @@ const items = [
   "DirectX 11",
   "HLSL",
   "Python",
+  "Dart",
+  "Flutter",
   "TensorFlow",
   "JavaScript",
   "React",
@@ -13,6 +15,7 @@ const items = [
   "VR / AR",
   "Procedural generation",
   "Gameplay systems",
+  "Secure embedded systems",
 ];
 
 /** A slow ticker of the stack. The duplicate list is hidden from assistive tech. */

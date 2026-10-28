@@ -1,4 +1,5 @@
-import { featuredProjects, otherProjects } from "@/data/projects";
+import { featuredProjects, otherProjects, spotlightProject } from "@/data/projects";
+import { AppSpotlight } from "../AppSpotlight";
 import { FeatureCard, ProjectCard } from "../ProjectCards";
 import { SectionHeading } from "../SectionHeading";
 
@@ -12,11 +13,17 @@ export function Work() {
           id="work-title"
           title="Things I've built, and how they work."
         >
-          Procedural worlds, XR hand tracking, defence simulation and game jams. Every project is a short case
-          study.
+          A published Android app, procedural worlds, XR hand tracking, defence simulation and game jams.
+          Every project is a short case study.
         </SectionHeading>
 
-        <div className="mt-14 space-y-6 sm:mt-20 sm:space-y-8">
+        {spotlightProject ? (
+          <div className="mt-14 sm:mt-20">
+            <AppSpotlight project={spotlightProject} />
+          </div>
+        ) : null}
+
+        <div className="mt-6 space-y-6 sm:mt-8 sm:space-y-8">
           {featuredProjects.map((p, i) => (
             <FeatureCard key={p.slug} project={p} index={i} />
           ))}

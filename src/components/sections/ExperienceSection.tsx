@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { experience } from "@/data/experience";
+import { experience, sideProjects } from "@/data/experience";
 import { ArrowRight } from "../icons";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
+import { Spotlight } from "../Spotlight";
 
 export function ExperienceSection() {
   return (
@@ -18,8 +19,8 @@ export function ExperienceSection() {
           id="experience-title"
           title="A career built on real-time."
         >
-          From defence training simulators to open-source hand tracking, and the games I build for the love of
-          it.
+          From defence and embedded systems to open-source hand tracking, plus the games I build for the love
+          of it.
         </SectionHeading>
 
         <ol className="relative mt-16 sm:mt-24">
@@ -72,6 +73,43 @@ export function ExperienceSection() {
             </li>
           ))}
         </ol>
+
+        <div className="mt-20 sm:mt-28">
+          <div className="mb-8 flex items-center gap-4">
+            <h3 className="font-mono text-xs font-medium tracking-[0.16em] text-fg-muted uppercase">
+              Side projects & university work
+            </h3>
+            <span aria-hidden="true" className="h-px flex-1 bg-line" />
+          </div>
+          <p className="mb-8 max-w-2xl text-fg-muted">
+            Outside of work, I build games and tools for the love of it, and a few of my projects started at
+            university. These are personal and academic projects, not employment.
+          </p>
+          <ul className="grid gap-5 md:grid-cols-2">
+            {sideProjects.map((p, i) => (
+              <Reveal as="li" key={p.slug} delay={i * 90} className="h-full">
+                <Spotlight className="group h-full">
+                  <div className="flex h-full flex-col p-7 sm:p-9">
+                    <p className="font-mono text-xs tracking-[0.12em] text-ember-400 uppercase">{p.status}</p>
+                    <h4 className="mt-3 text-2xl font-semibold">
+                      <Link
+                        href={`/projects/${p.slug}`}
+                        className="after:absolute after:inset-0 after:z-10 after:content-['']"
+                      >
+                        {p.title}
+                      </Link>
+                    </h4>
+                    <p className="mt-4 text-fg-muted">{p.summary}</p>
+                    <p className="mt-auto inline-flex items-center gap-2 pt-7 font-display font-semibold text-fg transition-colors group-hover:text-ember-300">
+                      View project
+                      <ArrowRight className="arrow size-4" />
+                    </p>
+                  </div>
+                </Spotlight>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

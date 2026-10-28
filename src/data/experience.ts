@@ -8,18 +8,25 @@ export type Experience = {
   current?: boolean;
 };
 
+export type SideProject = {
+  title: string;
+  status: string;
+  summary: string;
+  slug: string;
+};
+
+/** Employment history, most recent first. */
 export const experience: Experience[] = [
   {
-    period: "Ongoing",
-    title: "Solo developer",
-    org: "Procedural Pirates · personal project",
-    summary: "A fully procedural, open-world pirate game built in my free time in Unreal Engine 5.4.",
+    period: "Sep 2024 – Present",
+    title: "Software Engineer",
+    org: "Systems Engineering & Assessment",
+    summary: "Back at SEA, working on full-stack secure embedded systems for defence and training customers.",
     points: [
-      "GPU terrain from Fractal Brownian Motion",
-      "Ten-octave Gerstner ocean via custom HLSL nodes",
-      "Spline-driven PCG town generation",
+      "Full-stack development of secure embedded systems",
+      "Building on years of customer-site delivery and bespoke tooling at SEA",
     ],
-    slug: "procedural-pirates",
+    slug: "sea",
     current: true,
   },
   {
@@ -47,15 +54,36 @@ export const experience: Experience[] = [
     ],
     slug: "sea",
   },
+];
+
+/** Personal and university projects. Not employment. */
+export const sideProjects: SideProject[] = [
   {
-    period: "Game development",
-    title: "Studio and game jam projects",
-    org: "Kachiku 64 · Global Game Jam 2019",
-    summary: "Team-based game development, from a 30-person studio project to a 48-hour jam.",
-    points: [
-      "Bomb interaction systems for a 64-player co-op party game",
-      "Second place at the UK's largest Global Game Jam site",
-    ],
+    title: "POITracker",
+    status: "Solo project · Live on Google Play",
+    summary:
+      "An Android travel companion for saving and organising places, built solo in Dart and Flutter with a Firebase backend. Offline-first, with Street View, sync and subscriptions.",
+    slug: "poitracker",
+  },
+  {
+    title: "Procedural Pirates",
+    status: "Personal project · ongoing",
+    summary:
+      "A fully procedural, open-world pirate game I build in my free time in Unreal Engine 5.4: GPU terrain, a ten-octave Gerstner ocean and spline-driven towns.",
+    slug: "procedural-pirates",
+  },
+  {
+    title: "Kachiku 64",
+    status: "University project",
+    summary:
+      "A 64-player local co-op party game built by a team of ~30. I built the bomb interaction systems.",
     slug: "kachiku-64",
+  },
+  {
+    title: "Country Roads",
+    status: "University game jam",
+    summary:
+      "Made for Global Game Jam 2019 by a team of five in 48 hours: a procedurally generated Wild West road game that placed second at the UK's largest jam site.",
+    slug: "country-roads",
   },
 ];
