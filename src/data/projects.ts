@@ -139,20 +139,20 @@ export const projects: Project[] = [
     slug: "sea",
     title: "Systems Engineering & Assessment",
     kind: "professional",
-    label: "Professional · Defence & training",
-    period: "May 2020 – Dec 2022",
+    label: "Professional · Defence, training & embedded",
+    period: "2020 – 2022 · 2024 – Present",
     summary:
-      "Defence and training simulation software across VR, AR and desktop, including customer-site deliveries and an in-house IDE for bespoke solutions.",
+      "Software Engineer at SEA, then and now: defence and training simulation across VR, AR and desktop, and today full-stack secure embedded systems.",
     tagline:
-      "Delivering defence and training simulation software, from VR and AR front ends to the tooling behind them.",
+      "Delivering defence and training software, from VR and AR front ends to full-stack secure embedded systems.",
     cover: "sea-warship",
     coverAlt: "A naval warship moored in a harbour beneath a rainbow.",
-    tech: ["C#", "VR", "AR", "Front-end", "In-house IDE", "Delivery documentation"],
+    tech: ["C#", "Full-stack", "Secure embedded systems", "VR", "AR", "In-house IDE"],
     facts: [
       { label: "Company", value: "Systems Engineering & Assessment" },
-      { label: "Role", value: "Primary C# and front-end developer for AR/VR" },
-      { label: "Period", value: "May 2020 – Dec 2022" },
-      { label: "Domain", value: "Defence and training simulation" },
+      { label: "Role", value: "Software Engineer (current role)" },
+      { label: "Period", value: "May 2020 – Dec 2022, and 2024 – present" },
+      { label: "Domain", value: "Defence, training and secure embedded systems" },
     ],
     highlights: [
       {
@@ -175,7 +175,8 @@ export const projects: Project[] = [
     story: {
       heading: "My work at SEA",
       paragraphs: [
-        "During my time at Systems Engineering & Assessment, from May 2020 to December 2022, I played a pivotal role in delivering a wide array of defence and training software projects. I worked both collaboratively within teams and independently, taking on complex tasks that demanded a deep understanding of many technologies and development practices. I delivered products directly to customer sites, always with comprehensive delivery documentation for seamless implementation and support.",
+        "I rejoined Systems Engineering & Assessment as a Software Engineer in 2024, and my current work is on full-stack secure embedded systems.",
+        "In my first stint at SEA, from May 2020 to December 2022, I played a pivotal role in delivering a wide array of defence and training software projects. I worked both collaboratively within teams and independently, taking on complex tasks that demanded a deep understanding of many technologies and development practices. I delivered products directly to customer sites, always with comprehensive delivery documentation for seamless implementation and support.",
         "One of the key challenges was managing several projects at once. That meant context switching between programming languages and platforms, and it taught me to stay effective under pressure. The projects spanned both virtual reality and standard screen-based software, each tailored to the specific needs of defence and training applications.",
         "I also contributed to an efficient in-house IDE for bespoke solutions, and as the primary C# and front-end developer for augmented and virtual reality projects I pushed to deliver high-quality, user-centric immersive software. The experience sharpened my skills in software development, project management and client relations.",
       ],

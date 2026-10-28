@@ -26,6 +26,7 @@ const jsonLd = {
     "Real-time graphics",
     "Procedural generation",
     "Extended reality",
+    "Secure embedded systems",
   ],
 };
 

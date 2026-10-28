@@ -82,7 +82,7 @@ const code: Tok[][] = [
   [
     [p, "  now"],
     [x, ": "],
-    [s, '"Building Procedural Pirates in UE 5.4"'],
+    [s, '"Software Engineer at SEA: secure embedded systems"'],
     [x, ","],
   ],
   [

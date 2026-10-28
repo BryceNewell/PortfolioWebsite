@@ -8,18 +8,25 @@ export type Experience = {
   current?: boolean;
 };
 
+export type SideProject = {
+  title: string;
+  status: string;
+  summary: string;
+  slug: string;
+};
+
+/** Employment history, most recent first. */
 export const experience: Experience[] = [
   {
-    period: "Ongoing",
-    title: "Solo developer",
-    org: "Procedural Pirates · personal project",
-    summary: "A fully procedural, open-world pirate game built in my free time in Unreal Engine 5.4.",
+    period: "2024 – Present",
+    title: "Software Engineer",
+    org: "Systems Engineering & Assessment",
+    summary: "Back at SEA, working on full-stack secure embedded systems for defence and training customers.",
     points: [
-      "GPU terrain from Fractal Brownian Motion",
-      "Ten-octave Gerstner ocean via custom HLSL nodes",
-      "Spline-driven PCG town generation",
+      "Full-stack development of secure embedded systems",
+      "Building on years of customer-site delivery and bespoke tooling at SEA",
     ],
-    slug: "procedural-pirates",
+    slug: "sea",
     current: true,
   },
   {
@@ -47,15 +54,22 @@ export const experience: Experience[] = [
     ],
     slug: "sea",
   },
+];
+
+/** Unpaid work: personal projects, studio projects and game jams. Not employment. */
+export const sideProjects: SideProject[] = [
   {
-    period: "Game development",
-    title: "Studio and game jam projects",
-    org: "Kachiku 64 · Global Game Jam 2019",
-    summary: "Team-based game development, from a 30-person studio project to a 48-hour jam.",
-    points: [
-      "Bomb interaction systems for a 64-player co-op party game",
-      "Second place at the UK's largest Global Game Jam site",
-    ],
+    title: "Procedural Pirates",
+    status: "Personal project · ongoing",
+    summary:
+      "A fully procedural, open-world pirate game I build in my free time in Unreal Engine 5.4: GPU terrain, a ten-octave Gerstner ocean and spline-driven towns.",
+    slug: "procedural-pirates",
+  },
+  {
+    title: "Kachiku 64 & Global Game Jam 2019",
+    status: "Team projects",
+    summary:
+      "Bomb interaction systems for a 64-player co-op party game built by a team of ~30, and a second-place finish at the UK's largest Global Game Jam site in 48 hours.",
     slug: "kachiku-64",
   },
 ];

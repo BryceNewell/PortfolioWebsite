@@ -1,7 +1,7 @@
 import { Reveal } from "../Reveal";
 
 const stats = [
-  { value: "4+", label: "years shipping software professionally, across defence and XR" },
+  { value: "6+", label: "years shipping software professionally, across defence, XR and embedded systems" },
   { value: "64", label: "players in Kachiku 64, a local co-op party game built by a team of ~30" },
   { value: "10", label: "octaves of Gerstner waves driving the ocean in Procedural Pirates" },
   { value: "2nd", label: "place at the UK's largest Global Game Jam site, 2019, in just 48 hours" },
