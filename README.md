@@ -63,11 +63,11 @@ components layer.
 The site is served by a Cloudflare Worker with static assets (`wrangler.jsonc`), which uploads the exported `out/`
 folder and attaches the custom domain `brycenewell.co.uk`. There is no server code to run.
 
-| File                | Purpose                                                                     |
-| ------------------- | --------------------------------------------------------------------------- |
-| `wrangler.jsonc`    | Worker name, assets directory (`./out`), 404 handling and the custom domain |
-| `public/_headers`   | Security headers and long-lived caching for fingerprinted assets and images |
-| `public/_redirects` | 301s from the old `*.html` URLs to the new routes                           |
+| File                | Purpose                                                                                                                     |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `wrangler.jsonc`    | Worker name (must match the Worker's name in the dashboard), assets directory (`./out`), 404 handling and the custom domain |
+| `public/_headers`   | Security headers and long-lived caching for fingerprinted assets and images                                                 |
+| `public/_redirects` | 301s from the old `*.html` URLs to the new routes                                                                           |
 
 ### One-time setup
 
@@ -77,14 +77,26 @@ folder and attaches the custom domain `brycenewell.co.uk`. There is no server co
 2. **Connect the repository (recommended).** Workers & Pages → Create → Import a repository → pick this repo, then:
    - Build command: `npm run build`
    - Deploy command: `npx wrangler deploy`
-   - Production branch: `main`
+   - Production branch: `master` (this repository's default branch)
 
-   Every push to `main` then builds and deploys automatically, and other branches get preview builds. Cloudflare reads
+   Every push to `master` then builds and deploys automatically, and other branches get preview builds. Cloudflare reads
    the Node version from `.node-version`.
 
 3. **Redirect `www` to the apex (optional).** Add a DNS record for `www` (proxied, any placeholder IP such as
    `192.0.2.1`) and a Redirect Rule: _If hostname equals `www.brycenewell.co.uk` → Dynamic redirect to
    `concat("https://brycenewell.co.uk", http.request.uri.path)`, 301, preserve query string._
+
+### Troubleshooting: pushes are not building
+
+1. **Worker name must match.** `name` in `wrangler.jsonc` (currently `bryce-newell-portfolio`) has to equal the Worker's
+   name in the dashboard, or the deploy step fails.
+2. **Git connection.** Workers & Pages → your Worker → Settings → Builds should show this repository as connected.
+3. **Branch control.** In the same panel, the production branch must be `master`. Pushes to other branches only build
+   if "Builds for non-production branches" is on.
+4. **GitHub access.** GitHub → Settings → Applications → _Cloudflare Workers and Pages_ → Configure, and make sure this
+   repository is in its repository access list.
+5. **Build log.** Your Worker → Deployments (or Builds) shows each build and its log. Build command `npm run build`,
+   deploy command `npx wrangler deploy`, root directory `/`.
 
 ### Deploying by hand
 
