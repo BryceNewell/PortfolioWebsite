@@ -88,17 +88,17 @@ export function AppSpotlight({ project }: { project: Project }) {
           <div className="lg:col-span-6" aria-hidden="true">
             <div className="relative mx-auto flex max-w-[40rem] items-end justify-center">
               <PhoneFrame
-                image="poitracker-map"
+                image="poitracker-london-phone-map"
                 sizes="(min-width: 1024px) 14rem, 28vw"
                 className="relative -mr-[7%] mb-[-4%] w-[31%] -rotate-[4deg]"
               />
               <PhoneFrame
-                image="poitracker-detail"
+                image="poitracker-london-phone-details"
                 sizes="(min-width: 1024px) 17rem, 36vw"
                 className="relative z-10 w-[38%]"
               />
               <PhoneFrame
-                image="poitracker-list-dark"
+                image="poitracker-london-list-dark"
                 sizes="(min-width: 1024px) 14rem, 28vw"
                 className="relative -ml-[7%] mb-[-4%] w-[31%] rotate-[4deg]"
               />

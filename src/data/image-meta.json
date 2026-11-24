@@ -110,5 +110,65 @@
  "poitracker-cover": {
   "w": 1800,
   "h": 1125
+ },
+ "poitracker-london-10-inch-tablet-details": {
+  "w": 1440,
+  "h": 810
+ },
+ "poitracker-london-10-inch-tablet-map": {
+  "w": 1440,
+  "h": 810
+ },
+ "poitracker-london-7-inch-tablet-details": {
+  "w": 1440,
+  "h": 810
+ },
+ "poitracker-london-7-inch-tablet-map": {
+  "w": 1440,
+  "h": 810
+ },
+ "poitracker-london-foldable-cover-details": {
+  "w": 900,
+  "h": 1440
+ },
+ "poitracker-london-foldable-cover-map": {
+  "w": 900,
+  "h": 1440
+ },
+ "poitracker-london-foldable-square-details": {
+  "w": 1440,
+  "h": 1440
+ },
+ "poitracker-london-foldable-square-map": {
+  "w": 1440,
+  "h": 1440
+ },
+ "poitracker-london-foldable-wide-details": {
+  "w": 1440,
+  "h": 1080
+ },
+ "poitracker-london-foldable-wide-map": {
+  "w": 1440,
+  "h": 1080
+ },
+ "poitracker-london-phone-details": {
+  "w": 810,
+  "h": 1440
+ },
+ "poitracker-london-phone-map": {
+  "w": 810,
+  "h": 1440
+ },
+ "poitracker-london-list-light": {
+  "w": 810,
+  "h": 1440
+ },
+ "poitracker-london-list-dark": {
+  "w": 810,
+  "h": 1440
+ },
+ "poitracker-london-cover": {
+  "w": 1800,
+  "h": 1125
  }
 }

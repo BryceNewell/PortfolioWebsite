@@ -342,6 +342,42 @@ function AppScreens({ app, number }: { app: AppDetails; number: string }) {
             </Reveal>
           ))}
         </ul>
+        {app.deviceScreens && (
+          <>
+            <h3 className="mt-16 text-2xl font-semibold">Tablets and foldables</h3>
+            <ul className="mt-6 grid gap-6 lg:grid-cols-2">
+              {app.deviceScreens.map(({ label, map, details }) => (
+                <li key={label} className="rounded-2xl border border-line bg-ink-900 p-4 sm:p-6">
+                  <h4 className="text-lg font-semibold">{label}</h4>
+                  <div className="mt-4 grid grid-cols-2 items-start gap-3">
+                    <ZoomImage
+                      image={img(map)}
+                      alt={`Saved places in London on the POITracker map, shown on the ${label.toLowerCase()}`}
+                      sizes="(min-width: 1024px) 22vw, 45vw"
+                      className="overflow-hidden rounded-lg border border-line [&_img]:!h-auto"
+                    />
+                    <ZoomImage
+                      image={img(details)}
+                      alt={`Tower Bridge photo, notes and reviews in POITracker, shown on the ${label.toLowerCase()}`}
+                      sizes="(min-width: 1024px) 22vw, 45vw"
+                      className="overflow-hidden rounded-lg border border-line [&_img]:!h-auto"
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-fg-muted">
+              Tower Bridge sample photo by{" "}
+              <a
+                href="https://commons.wikimedia.org/wiki/File:Tower-bridge-of-london.jpg"
+                className="underline underline-offset-4 hover:text-fg"
+              >
+                Nicole Rathmayr (CC0)
+              </a>
+              .
+            </p>
+          </>
+        )}
       </div>
     </section>
   );

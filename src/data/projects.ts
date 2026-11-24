@@ -14,6 +14,7 @@ export type AppDetails = {
   playStoreUrl: string;
   icon: ImageKey;
   screens: { image: ImageKey; alt: string; caption: string }[];
+  deviceScreens?: { label: string; map: ImageKey; details: ImageKey }[];
   features: { title: string; body: string }[];
   stats: { value: string; label: string }[];
   stack: { group: string; items: string[] }[];
@@ -57,9 +58,9 @@ export const projects: Project[] = [
       "A map-first, offline-first travel companion for saving and organising places. Designed, built and released solo in Dart and Flutter, with Firebase sync, Street View and Google Play subscriptions.",
     tagline:
       "Never forget a hidden gem or a breathtaking view again. A travel companion I designed, built and shipped to Google Play on my own.",
-    cover: "poitracker-cover",
+    cover: "poitracker-london-cover",
     coverAlt:
-      "Three phone screens from POITracker: a map of saved places, a place detail with Street View, and a colour-coded list in dark mode.",
+      "Three phone screens from POITracker: a map of saved places in London, Tower Bridge details, and a saved-places list in dark mode.",
     tech: ["Dart", "Flutter", "Riverpod", "SQLite", "Firebase", "Google Maps", "Kotlin", "TypeScript"],
     facts: [
       { label: "Platform", value: "Android, on Google Play" },
@@ -100,7 +101,7 @@ export const projects: Project[] = [
         href: "https://play.google.com/store/apps/details?id=com.brycenewell.holidaypoitracker",
       },
     ],
-    note: "Screenshots are from the Google Play listing. Google Play is a trademark of Google LLC.",
+    note: "Screenshots show a sample London trip. Google Play is a trademark of Google LLC.",
     spotlight: true,
     app: {
       playStoreUrl:
@@ -108,24 +109,51 @@ export const projects: Project[] = [
       icon: "poitracker-icon",
       screens: [
         {
-          image: "poitracker-map",
-          alt: "POITracker's map view showing saved places as pins around Port Dickson, with collection tabs along the top.",
+          image: "poitracker-london-phone-map",
+          alt: "POITracker's map view showing saved places as pins around central London.",
           caption: "Your places on an interactive Google Map",
         },
         {
-          image: "poitracker-list-light",
+          image: "poitracker-london-list-light",
           alt: "POITracker's list view in light theme with colour-coded category rows and thumbnails.",
           caption: "Colour-coded categories in the list",
         },
         {
-          image: "poitracker-list-dark",
+          image: "poitracker-london-list-dark",
           alt: "POITracker's list view in dark theme with colour-coded rows.",
           caption: "Light and dark themes throughout",
         },
         {
-          image: "poitracker-detail",
-          alt: "A POITracker place detail screen with a Street View panorama, photos section, address, navigate and reminder buttons, and nearby businesses.",
-          caption: "Street View, photos, reviews and reminders per place",
+          image: "poitracker-london-phone-details",
+          alt: "Tower Bridge details in POITracker showing a photo, rating, trip notes, navigation and reviews.",
+          caption: "Photos, notes and reviews for a saved place",
+        },
+      ],
+      deviceScreens: [
+        {
+          label: "7-inch tablet",
+          map: "poitracker-london-7-inch-tablet-map",
+          details: "poitracker-london-7-inch-tablet-details",
+        },
+        {
+          label: "10-inch tablet",
+          map: "poitracker-london-10-inch-tablet-map",
+          details: "poitracker-london-10-inch-tablet-details",
+        },
+        {
+          label: "Foldable square display",
+          map: "poitracker-london-foldable-square-map",
+          details: "poitracker-london-foldable-square-details",
+        },
+        {
+          label: "Foldable wide display",
+          map: "poitracker-london-foldable-wide-map",
+          details: "poitracker-london-foldable-wide-details",
+        },
+        {
+          label: "Foldable cover display",
+          map: "poitracker-london-foldable-cover-map",
+          details: "poitracker-london-foldable-cover-details",
         },
       ],
       features: [
