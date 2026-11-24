@@ -14,3 +14,10 @@
   Cache-Control: public, max-age=2592000
 /brand/*
   Cache-Control: public, max-age=2592000
+
+/invite/*
+  X-Robots-Tag: noindex
+  Referrer-Policy: no-referrer
+/collection/*
+  X-Robots-Tag: noindex
+  Referrer-Policy: no-referrer

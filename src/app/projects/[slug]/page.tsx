@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GooglePlayButton } from "@/components/GooglePlayButton";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "@/components/icons";
+import { PoiTrackerLinks } from "@/components/PoiTrackerPage";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { Reveal } from "@/components/Reveal";
 import { Spotlight } from "@/components/Spotlight";
@@ -128,9 +129,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           {app ? (
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <GooglePlayButton href={app.playStoreUrl} />
-              <Link href="/privacy-policy" className="btn btn-ghost">
-                Privacy policy
-              </Link>
+              {project.slug === "poitracker" && <PoiTrackerLinks />}
             </div>
           ) : null}
         </div>

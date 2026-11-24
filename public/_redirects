@@ -10,3 +10,7 @@
 /gan.html                            /projects/3d-gan                          301
 /Library.html                        /#work                                    301
 /index.html                          /                                         301
+
+# Browser fallback for POITracker Android App Links
+/invite/*                           /shared-link                              200
+/collection/*                       /shared-link                              200

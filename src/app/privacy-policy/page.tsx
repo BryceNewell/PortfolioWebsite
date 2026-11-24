@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PoiTrackerLinks } from "@/components/PoiTrackerPage";
 import { ArrowLeft } from "@/components/icons";
 import policy from "@/data/privacy-policy.json";
 
@@ -37,11 +38,11 @@ export default function PrivacyPolicyPage() {
   return (
     <article className="container-x pt-36 pb-24 sm:pt-44 sm:pb-32">
       <Link
-        href="/"
+        href="/projects/poitracker"
         className="group inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-fg-muted uppercase transition-colors hover:text-ember-300"
       >
         <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-        Back to portfolio
+        Back to POITracker
       </Link>
 
       <header className="mt-10 max-w-3xl">
@@ -98,6 +99,9 @@ export default function PrivacyPolicyPage() {
           const [first] = anchors(b.ids);
           return <p key={i} id={first} dangerouslySetInnerHTML={{ __html: b.h }} />;
         })}
+      </div>
+      <div className="mt-10">
+        <PoiTrackerLinks current="/privacy" />
       </div>
     </article>
   );
